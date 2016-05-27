@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-27 11:22:51 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.zuodexin.po.Professor" table="professor" catalog="school">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="institute" class="com.zuodexin.po.Institute" fetch="select">
+            <column name="institute" />
+        </many-to-one>
+        <property name="workId" type="string">
+            <column name="work_id" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="10" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="20" not-null="true" />
+        </property>
+        <set name="hires" table="hire" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="professor" not-null="true" />
+            </key>
+            <one-to-many class="com.zuodexin.po.Hire" />
+        </set>
+        <set name="instructs" table="instruct" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="professor" not-null="true" />
+            </key>
+            <one-to-many class="com.zuodexin.po.Instruct" />
+        </set>
+        <set name="teachClasses" table="teach_class" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="professor" not-null="true" />
+            </key>
+            <one-to-many class="com.zuodexin.po.TeachClass" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-27 11:22:51 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.zuodexin.po.SelectCourse" table="select_course" catalog="school">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="course" class="com.zuodexin.po.Course" fetch="select">
+            <column name="course" not-null="true" />
+        </many-to-one>
+        <many-to-one name="student" class="com.zuodexin.po.Student" fetch="select">
+            <column name="student" not-null="true" />
+        </many-to-one>
+        <property name="grade" type="java.lang.Integer">
+            <column name="grade" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-27 11:22:51 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.zuodexin.po.Schoolclass" table="schoolclass" catalog="school">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="course" class="com.zuodexin.po.Course" fetch="select">
+            <column name="course" not-null="true" />
+        </many-to-one>
+        <property name="info" type="string">
+            <column name="info" length="65535" />
+        </property>
+        <set name="teachClasses" table="teach_class" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="schoolclass" not-null="true" />
+            </key>
+            <one-to-many class="com.zuodexin.po.TeachClass" />
+        </set>
+        <set name="jionClasses" table="jion_class" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="schoolclass" not-null="true" />
+            </key>
+            <one-to-many class="com.zuodexin.po.JionClass" />
+        </set>
+    </class>
+</hibernate-mapping>

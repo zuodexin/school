@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">11111111</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3306/school</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.show_sql">false</property>
+        <mapping resource="com/zuodexin/po/Student.hbm.xml" />
+        <mapping resource="com/zuodexin/po/Professor.hbm.xml" />
+        <mapping resource="com/zuodexin/po/Instruct.hbm.xml" />
+        <mapping resource="com/zuodexin/po/TeachClass.hbm.xml" />
+        <mapping resource="com/zuodexin/po/Schoolclass.hbm.xml" />
+        <mapping resource="com/zuodexin/po/JionClass.hbm.xml" />
+        <mapping resource="com/zuodexin/po/Hire.hbm.xml" />
+        <mapping resource="com/zuodexin/po/SelectCourse.hbm.xml" />
+        <mapping resource="com/zuodexin/po/Course.hbm.xml" />
+        <mapping resource="com/zuodexin/po/Institute.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

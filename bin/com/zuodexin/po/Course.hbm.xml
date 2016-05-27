@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-27 11:22:51 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.zuodexin.po.Course" table="course" catalog="school">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="institute" class="com.zuodexin.po.Institute" fetch="select">
+            <column name="institute" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="30" not-null="true" />
+        </property>
+        <property name="peroid" type="int">
+            <column name="peroid" not-null="true" />
+        </property>
+        <set name="selectCourses" table="select_course" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course" not-null="true" />
+            </key>
+            <one-to-many class="com.zuodexin.po.SelectCourse" />
+        </set>
+        <set name="schoolclasses" table="schoolclass" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course" not-null="true" />
+            </key>
+            <one-to-many class="com.zuodexin.po.Schoolclass" />
+        </set>
+        <set name="instructs" table="instruct" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course" not-null="true" />
+            </key>
+            <one-to-many class="com.zuodexin.po.Instruct" />
+        </set>
+    </class>
+</hibernate-mapping>
