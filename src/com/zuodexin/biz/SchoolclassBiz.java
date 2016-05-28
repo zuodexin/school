@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.zuodexin.dao.SchoolclassDao;
 import com.zuodexin.po.Course;
+import com.zuodexin.po.JionClass;
 import com.zuodexin.po.Schoolclass;
 
 public class SchoolclassBiz extends Biz{

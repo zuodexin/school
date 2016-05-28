@@ -78,6 +78,13 @@ public class StudentBiz extends Biz{
 		List<Schoolclass> classList=new SetAdapter<Schoolclass>(course.getSchoolclasses()).toList(); 
 		return classList;
 	}
+	
+	//查看已选课程详情
+		public List<SelectCourse> getSelectedCourse(){
+			List<SelectCourse> courseList=new SetAdapter<SelectCourse>(((Student)entity).getSelectCourses()).toList();
+			return courseList;
+		}
+	
 	//获得已选课程的班级
 	public JionClass getCourseClass(Course course){
 		
@@ -92,6 +99,7 @@ public class StudentBiz extends Biz{
 			jionClass.setSchoolclass(schoolclass);
 			n=jionClassDao.updateOne(jionClass);
 		}	
+		this.refresh();
 		return n==1?true:false;
 	}
 	public void dropCourse(Course course){
@@ -107,10 +115,7 @@ public class StudentBiz extends Biz{
 		if(jionClass!=null){
 			jionClassDao.deleteOne(jionClass);
 		}
+		this.refresh();
 	}
 	
-	public List<SelectCourse> getSelectedCourse(){
-		List<SelectCourse> courseList=new SetAdapter<SelectCourse>(((Student)entity).getSelectCourses()).toList();
-		return courseList;
-	}
 }

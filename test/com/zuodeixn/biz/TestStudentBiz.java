@@ -84,4 +84,13 @@ public class TestStudentBiz {
 		System.out.println("班级："+jionClass.getSchoolclass().getInfo());
 	}
 	
+	@Test
+	public void testViewSelectedCourse(){
+		studentBiz.Login("1312681", "111");
+		List<SelectCourse> selectCourses=studentBiz.getSelectedCourse();
+		System.out.println("已选课程详情");
+		for(SelectCourse s:selectCourses){
+			System.out.println(s.getCourse().getName()+"  "+s.getGrade()+"分");
+		}
+	}
 }

@@ -2,6 +2,8 @@ package com.zuodexin.dao;
 
 import java.util.List;
 
+import com.zuodexin.po.Professor;
+import com.zuodexin.po.Schoolclass;
 import com.zuodexin.po.TeachClass;
 
 public class TeachClassDao extends Dao{
@@ -17,5 +19,12 @@ public class TeachClassDao extends Dao{
 	List<TeachClass> findAll() {
 		return (List<TeachClass>) findAll(TeachClass.class);
 	}
-
+	
+	public TeachClass findByProfessorClass(Professor professor,Schoolclass schoolclass){
+		String hql="FROM TeachClass "
+				+ "WHERE professor=? and schoolclass=?";
+		return (TeachClass) viewer.viewOne(hql, professor,schoolclass);
+	}
+	
+	
 }

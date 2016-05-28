@@ -32,4 +32,9 @@ public class JionClassDao extends Dao{
 				+ "and S.course=? and J.schoolclass=S";
 		return (JionClass) viewer.viewOne(hql, student,course);
 	}
+	
+	public List<JionClass> findJoinByClass(Schoolclass schoolclass){
+		String hql="FROM  JionClass WHERE schoolclass=? ";
+		return (List<JionClass>) viewer.viewMany(hql, schoolclass);
+	}
 }

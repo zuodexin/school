@@ -11,6 +11,7 @@ import com.zuodexin.dao.SchoolclassDao;
 import com.zuodexin.po.Course;
 import com.zuodexin.po.Schoolclass;
 import com.zuodexin.po.Student;
+import com.zuodexin.util.SetAdapter;
 
 public class CourseBiz extends Biz {
 	
@@ -51,6 +52,12 @@ public class CourseBiz extends Biz {
 			}
 		});
 		return result;
+	}
+	
+	public List<Schoolclass> getClassList(){
+		return new SetAdapter<Schoolclass>(
+				((Course)this.entity).getSchoolclasses()
+				).toList();	
 	}
 	
 	public Schoolclass getStudentClass(Student student){
