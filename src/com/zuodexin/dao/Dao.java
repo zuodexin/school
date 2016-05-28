@@ -75,6 +75,7 @@ public abstract class Dao {
 	public void closeSession(){
 		session.close();
 	}
+	
 	public Session getSession(){
 		return this.session;
 	}

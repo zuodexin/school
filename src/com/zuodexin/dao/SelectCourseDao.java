@@ -24,9 +24,9 @@ public class SelectCourseDao extends Dao{
 		String hql="FROM SelectCourse WHERE student= ?";
 		return (List<SelectCourse>) viewer.viewMany(hql,id);
 	}
-	public boolean exist(Student student,Course course){
+	public SelectCourse findByStudentCourse(Student student,Course course){
 		String hql="FROM SelectCourse WHERE student=? and course=?";
 		SelectCourse c=(SelectCourse) viewer.viewOne(hql, student,course);
-		return c==null?false:true;
+		return c;
 	}
 }

@@ -27,6 +27,7 @@ public class Inserter implements DBUpdater{
 			tx.commit();
 		}
 		catch(Exception e){
+			e.printStackTrace();
 			tx.rollback();
 			return 0;
 		}
