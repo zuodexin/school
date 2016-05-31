@@ -19,7 +19,7 @@ import com.zuodexin.po.Student;
 import com.zuodexin.po.TeachClass;
 import com.zuodexin.util.SetAdapter;
 
-public class ProfessorBiz extends Biz{
+public class ProfessorBiz extends Biz implements AuthBiz{
 	InstructDao instructDao=new InstructDao();
 	SelectCourseDao selectCourseDao=new SelectCourseDao();
 	JionClassDao jionClassDao=new JionClassDao();
@@ -39,6 +39,16 @@ public class ProfessorBiz extends Biz{
 		entity=professorDao.findOneByUsernamePassword(workid, password);
 		if(entity==null)
 			return false;
+		return true;
+	}
+	
+	public boolean Regist(Professor professor){
+		ProfessorDao professorDao=(ProfessorDao) entityDao;
+		int n=professorDao.insertOne(professor);
+		if(n==0)
+			return false;
+		this.entity=professor;
+		this.refresh();
 		return true;
 	}
 	

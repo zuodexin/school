@@ -29,7 +29,7 @@ public class TestStudentBiz {
 	
 	@Test
 	public void testSelectCourse(){
-		Institute institute= new InstituteDao().findOneById(13);
+		Institute institute= new InstituteDao().findOneById(12);
 		studentBiz.Login("1312680","111");
 		List<Course> list=studentBiz.getAvailableCourses(institute);
 		System.out.println("课程列表：");
@@ -86,11 +86,14 @@ public class TestStudentBiz {
 	
 	@Test
 	public void testViewSelectedCourse(){
-		studentBiz.Login("1312681", "111");
+		studentBiz.Login("1312680", "111");
 		List<SelectCourse> selectCourses=studentBiz.getSelectedCourse();
+//		List<SelectCourse> selectCourses=studentBiz.getFinishCourse();
 		System.out.println("已选课程详情");
 		for(SelectCourse s:selectCourses){
 			System.out.println(s.getCourse().getName()+"  "+s.getGrade()+"分");
 		}
 	}
+	
+	
 }

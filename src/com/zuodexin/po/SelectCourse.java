@@ -1,5 +1,10 @@
 package com.zuodexin.po;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.zuodexin.biz.StudentBiz;
+import com.zuodexin.controller.StudentController;
 import com.zuodexin.po.itf.Refreshable;
 
 // Generated 2016-5-27 11:22:51 by Hibernate Tools 4.0.0
@@ -61,5 +66,4 @@ public class SelectCourse implements java.io.Serializable ,Refreshable{
 	public void setGrade(Integer grade) {
 		this.grade = grade;
 	}
-
 }

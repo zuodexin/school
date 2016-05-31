@@ -18,7 +18,7 @@ import com.zuodexin.po.SelectCourse;
 import com.zuodexin.po.Student;
 import com.zuodexin.util.SetAdapter;
 
-public class StudentBiz extends Biz{
+public class StudentBiz extends Biz implements AuthBiz{
 	CourseDao courseDao=new CourseDao();
 	SchoolclassDao classDao=new SchoolclassDao();
 	JionClassDao jionClassDao=new JionClassDao();
@@ -39,6 +39,16 @@ public class StudentBiz extends Biz{
 		entity=studentDao.findOneByUsernamePassword(stuid, password);
 		if(entity==null)
 			return false;
+		return true;
+	}
+	
+	public boolean Regist(Student student){
+		StudentDao studentDao=(StudentDao) entityDao;
+		int n=studentDao.insertOne(student);
+		if(n==0)
+			return false;
+		this.entity=student;
+		this.refresh();
 		return true;
 	}
 	
@@ -81,8 +91,9 @@ public class StudentBiz extends Biz{
 	
 	//查看已选课程详情
 		public List<SelectCourse> getSelectedCourse(){
-			List<SelectCourse> courseList=new SetAdapter<SelectCourse>(((Student)entity).getSelectCourses()).toList();
-			return courseList;
+			Student student= (Student)this.entity;
+			List<SelectCourse> list=selectCourseDao.findUngradedCourse(student);
+			return list;
 		}
 	
 	//获得已选课程的班级
@@ -117,5 +128,9 @@ public class StudentBiz extends Biz{
 		}
 		this.refresh();
 	}
-	
+	public List<SelectCourse> getFinishCourse(){
+		Student student= (Student)this.entity;
+		List<SelectCourse> list=selectCourseDao.findGradedCourse(student);
+		return list;
+	}
 }

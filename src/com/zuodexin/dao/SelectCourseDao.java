@@ -29,4 +29,14 @@ public class SelectCourseDao extends Dao{
 		SelectCourse c=(SelectCourse) viewer.viewOne(hql, student,course);
 		return c;
 	}
+	public List<SelectCourse> findGradedCourse(Student student){
+		String hql="FROM SelectCourse WHERE student=? and grade!=null";
+		List<SelectCourse> list=(List<SelectCourse>) viewer.viewMany(hql, student);
+		return list;
+	}
+	public List<SelectCourse> findUngradedCourse(Student student){
+		String hql="FROM SelectCourse WHERE student=? and grade is null";
+		List<SelectCourse> list=(List<SelectCourse>) viewer.viewMany(hql, student);
+		return list;
+	}
 }
