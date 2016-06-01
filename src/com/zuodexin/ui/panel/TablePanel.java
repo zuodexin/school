@@ -15,7 +15,6 @@ public class TablePanel extends JScrollPane{
 	MyTableModel tmd;
 	
 	public TablePanel(MyTableModel tmd){
-		this.getViewport().setBackground(Color.CYAN);
 		this.tmd=tmd;
 		table.setModel(tmd);
 		this.setViewportView(table);	

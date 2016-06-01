@@ -1,11 +1,13 @@
 package com.zuodexin.biz;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.zuodexin.dao.InstructDao;
 import com.zuodexin.dao.JionClassDao;
 import com.zuodexin.dao.ProfessorDao;
+import com.zuodexin.dao.SchoolclassDao;
 import com.zuodexin.dao.SelectCourseDao;
 import com.zuodexin.dao.StudentDao;
 import com.zuodexin.dao.TeachClassDao;
@@ -24,6 +26,7 @@ public class ProfessorBiz extends Biz implements AuthBiz{
 	SelectCourseDao selectCourseDao=new SelectCourseDao();
 	JionClassDao jionClassDao=new JionClassDao();
 	TeachClassDao teachClassDao=new TeachClassDao();
+	SchoolclassDao schoolclassDao=new SchoolclassDao();
 	
 	public ProfessorBiz(){
 		this.entityDao=new ProfessorDao();
@@ -72,13 +75,18 @@ public class ProfessorBiz extends Biz implements AuthBiz{
 				).toList();
 	}
 	
-	public List<TeachClass> getTeachClassesList(){
-		return new SetAdapter<TeachClass>(
-				((Professor)this.entity).getTeachClasses()
-				).toList();
+	public List<Schoolclass> getTeachClassesList(){
+		List<Schoolclass> classList=new ArrayList<Schoolclass>();
+		Iterator iterator=((Professor)this.entity).getTeachClasses().iterator();
+		while(iterator.hasNext()){
+			TeachClass t=(TeachClass) iterator.next();
+			classList.add(t.getSchoolclass());
+		}
+		return classList;
 	}
 	
 	public boolean teachClass(Schoolclass schoolclass){
+		if(IsClassTeacher(schoolclass)) return true;
 		TeachClass teachClass=new TeachClass();
 		teachClass.setProfessor((Professor)this.entity);
 		teachClass.setSchoolclass(schoolclass);
@@ -88,6 +96,7 @@ public class ProfessorBiz extends Biz implements AuthBiz{
 	}
 	
 	public boolean declineClass(Schoolclass schoolclass){
+		if(!IsClassTeacher(schoolclass)) return true;
 		TeachClass teachClass =teachClassDao.
 				findByProfessorClass((Professor)this.entity, schoolclass);
 		if(teachClass!=null){
@@ -106,4 +115,18 @@ public class ProfessorBiz extends Biz implements AuthBiz{
 		return result;
 	}
 	
+	public List<Schoolclass> getClassList(Course course){
+		List<Schoolclass> classList=schoolclassDao.findByCourse(course); 
+		return classList;
+	}
+	public boolean IsClassTeacher(Schoolclass schoolclass) {
+		Iterator<TeachClass> iterator=schoolclass.getTeachClasses().iterator();
+		Professor professor=(Professor) this.getEntity();
+		while(iterator.hasNext()){
+			TeachClass teachClass=iterator.next();
+			if(professor.getId()==teachClass.getProfessor().getId())
+				return true;
+		}
+		return false;
+	}
 }

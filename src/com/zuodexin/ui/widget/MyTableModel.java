@@ -48,6 +48,7 @@ public class MyTableModel extends AbstractTableModel{
 
 	public void update() {
 		this.fireTableDataChanged();
+		System.out.println("表格更新");
 	}
 	
 }

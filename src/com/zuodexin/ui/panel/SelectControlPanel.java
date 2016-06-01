@@ -24,4 +24,28 @@ public class SelectControlPanel extends ControlPanel{
 	@Override
 	public void onItemChanged(Object item) {		
 	}
+
+	public JLabel getLabel() {
+		return label;
+	}
+
+	public void setLabel(JLabel label) {
+		this.label = label;
+	}
+
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox comboBox) {
+		this.comboBox = comboBox;
+	}
+
+	public JButton getJbSelect() {
+		return jbSelect;
+	}
+
+	public void setJbSelect(JButton jbSelect) {
+		this.jbSelect = jbSelect;
+	}
 }

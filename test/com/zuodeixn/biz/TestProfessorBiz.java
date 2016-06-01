@@ -56,9 +56,9 @@ public class TestProfessorBiz {
 			System.out.println(professor.getName()+" 教  "+i.getCourse().getName());
 		}
 		System.out.println(professor.getName()+"负责的班级有");
-		List<TeachClass> teachList=professorBiz.getTeachClassesList();
-		for(TeachClass t:teachList){
-			System.out.println(t.getSchoolclass().getInfo());
+		List<Schoolclass> teachList=professorBiz.getTeachClassesList();
+		for(Schoolclass t:teachList){
+			System.out.println(t.getInfo());
 		}
 		
 		
@@ -75,8 +75,8 @@ public class TestProfessorBiz {
 		
 		System.out.println(professor.getName()+"负责的班级有");
 		teachList=professorBiz.getTeachClassesList();
-		for(TeachClass t:teachList){
-			System.out.println(t.getSchoolclass().getInfo());
+		for(Schoolclass t:teachList){
+			System.out.println(t.getInfo());
 		}
 		
 //		professorBiz.declineClass(toTeach);
@@ -97,11 +97,11 @@ public class TestProfessorBiz {
 			System.out.println(professor.getName()+" 教  "+i.getCourse().getName());
 		}
 		System.out.println(professor.getName()+"负责的班级有");
-		List<TeachClass> teachList=professorBiz.getTeachClassesList();
-		for(TeachClass t:teachList){
-			System.out.println(t.getSchoolclass().getInfo());
+		List<Schoolclass> teachList=professorBiz.getTeachClassesList();
+		for(Schoolclass t:teachList){
+			System.out.println(t.getInfo());
 		}
-		Schoolclass schoolclass=teachList.get(0).getSchoolclass();
+		Schoolclass schoolclass=teachList.get(0);
 		List<Student> stulist=professorBiz.seeStudentList(schoolclass);
 		System.out.println("选择了该课的有");
 		for(Student s:stulist){

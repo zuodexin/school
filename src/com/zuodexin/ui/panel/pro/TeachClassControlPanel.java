@@ -1,6 +1,8 @@
 package com.zuodexin.ui.panel.pro;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,35 +13,80 @@ import com.zuodexin.biz.ProfessorBiz;
 import com.zuodexin.controller.ProfessorController;
 import com.zuodexin.po.Course;
 import com.zuodexin.po.Instruct;
+import com.zuodexin.po.Professor;
+import com.zuodexin.po.Schoolclass;
 import com.zuodexin.po.TeachClass;
+import com.zuodexin.ui.frame.ProfessorFrame;
 import com.zuodexin.ui.panel.ControlPanel;
 import com.zuodexin.ui.panel.SelectDeleteControlPanel;
 
 public class TeachClassControlPanel extends SelectDeleteControlPanel{
-	JCheckBox all=new JCheckBox("显示所有");
 	List<Instruct> instructList=new ArrayList<Instruct>();
-	TeachClass teachClass;
+	Schoolclass schoolclass;
 	
 	public TeachClassControlPanel(JFrame frame) {
-		super(frame, "课程", "教授", "取消教授");
+		super(frame, "课程", "授课", "取消授课");
 		ProfessorBiz biz=ProfessorController.getInstance().getBiz();
 		instructList=biz.getInstructList();
-		comboBox.addItem("全部");
+		comboBox.addItem("我的班级");
 		for(Instruct i:instructList){
 			Course course=i.getCourse();
 			comboBox.addItem(course.getName());
 		}
+		jbSelect.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(schoolclass==null) return;
+				ProfessorBiz biz=ProfessorController.getInstance().getBiz();
+				biz.teachClass(schoolclass);
+				((ProfessorFrame)parentFrame).refreshData();
+				schoolclass=null;
+			}
+		});
+		jbDelete.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(schoolclass==null) return;
+				ProfessorBiz biz=ProfessorController.getInstance().getBiz();
+				biz.declineClass(schoolclass);
+				((ProfessorFrame)parentFrame).refreshData();
+				schoolclass=null;
+			}
+		});
+		jbSelect.setEnabled(false);
+		jbDelete.setEnabled(false);
 		this.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
 		this.add(label);
 		this.add(comboBox);
 		this.add(jbSelect);
 		this.add(jbDelete);
-		this.add(all);
 	}
 
 	@Override
 	public void onItemChanged(Object item) {
-		teachClass=(TeachClass) item;
+		schoolclass=(Schoolclass) item;
+		if(schoolclass==null){
+			jbDelete.setEnabled(false);
+			jbSelect.setEnabled(false);
+			return;
+		}
+		ProfessorBiz biz=ProfessorController.getInstance().getBiz();
+		if(biz.IsClassTeacher(schoolclass)){
+			jbDelete.setEnabled(true);
+			jbSelect.setEnabled(false);
+		}
+		else{
+			jbSelect.setEnabled(true);
+			jbDelete.setEnabled(false);
+		}
 	}
 
+	public List<Instruct> getInstructList() {
+		return instructList;
+	}
+
+	public void setInstructList(List<Instruct> instructList) {
+		this.instructList = instructList;
+	}
+	
 }

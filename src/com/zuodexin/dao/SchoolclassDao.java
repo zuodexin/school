@@ -17,4 +17,9 @@ public class SchoolclassDao extends Dao implements DaoAdapter{
 	public List<Schoolclass> findAll() {
 		return (List<Schoolclass>)this.findAll(Schoolclass.class);
 	}
+	public List<Schoolclass> findByCourse(Course course){
+		String hql="FROM Schoolclass "
+				+ "WHERE course=? ";
+		return  (List<Schoolclass>) viewer.viewMany(hql, course);
+	}
 }

@@ -23,4 +23,36 @@ public class SelectDeleteControlPanel extends ControlPanel{
 		
 	}
 
+	public JLabel getLabel() {
+		return label;
+	}
+
+	public void setLabel(JLabel label) {
+		this.label = label;
+	}
+
+	public JComboBox getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox comboBox) {
+		this.comboBox = comboBox;
+	}
+
+	public JButton getJbSelect() {
+		return jbSelect;
+	}
+
+	public void setJbSelect(JButton jbSelect) {
+		this.jbSelect = jbSelect;
+	}
+
+	public JButton getJbDelete() {
+		return jbDelete;
+	}
+
+	public void setJbDelete(JButton jbDelete) {
+		this.jbDelete = jbDelete;
+	}
+
 }

@@ -12,7 +12,7 @@ import com.zuodexin.ui.widget.MyTableModel;
 
 public class ClassListAdapter implements ListAdapter{
 	String[] head={"id","课程名","班级名","选课人数","教授"};
-	List<TeachClass> data=new ArrayList<TeachClass>();
+	List<Schoolclass> data=new ArrayList<Schoolclass>();
 	MyTableModel model;
 	
 	@Override
@@ -22,11 +22,10 @@ public class ClassListAdapter implements ListAdapter{
 
 	@Override
 	public List itemAttribute(int index) {
-		TeachClass teachClass=data.get(index);
-		Course course=teachClass.getSchoolclass().getCourse();
-		Schoolclass schoolclass=teachClass.getSchoolclass();
+		Schoolclass schoolclass=data.get(index);
+		Course course=schoolclass.getCourse();
 		List list=new ArrayList();
-		list.add(teachClass.getId());
+		list.add(schoolclass.getId());
 		list.add(course.getName());
 		list.add(schoolclass.getInfo());
 		list.add(schoolclass.getJionClasses().size());
@@ -47,7 +46,7 @@ public class ClassListAdapter implements ListAdapter{
 
 	@Override
 	public void addItem(Object o) {
-		data.add((TeachClass) o);
+		data.add((Schoolclass) o);
 	}
 
 	@Override
@@ -58,6 +57,7 @@ public class ClassListAdapter implements ListAdapter{
 	@Override
 	public void attachData(List list) {
 		data=list;
+//		System.out.println("附上数据");
 		if(model!=null)
 			model.update();
 	}
@@ -65,6 +65,7 @@ public class ClassListAdapter implements ListAdapter{
 	@Override
 	public void attachObserver(MyTableModel model) {
 		this.model=model;
+//		System.out.println("添加表格观察者");
 	}
 
 }
