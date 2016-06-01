@@ -25,6 +25,4 @@ public class TeachClassDao extends Dao{
 				+ "WHERE professor=? and schoolclass=?";
 		return (TeachClass) viewer.viewOne(hql, professor,schoolclass);
 	}
-	
-	
 }

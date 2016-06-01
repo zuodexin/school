@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public abstract class ControlPanel extends JPanel{
-	JFrame parentFrame;
+	protected JFrame parentFrame;
 	public ControlPanel(JFrame frame){
 		parentFrame=frame;
 		this.setBackground(Color.green);

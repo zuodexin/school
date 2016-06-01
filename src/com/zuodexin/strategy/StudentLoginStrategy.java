@@ -20,7 +20,6 @@ public class StudentLoginStrategy implements LoginStrategy{
 			GlobalController.getInstance().setBusinessFrame(studentFrame);
 			GlobalController.getInstance().getBusinessFrame().setVisible(true);
 			GlobalController.getInstance().getLoginFrame().dispose();
-//			System.out.println(biz);
 			return biz;
 		}
 		JOptionPane.showMessageDialog(null, 

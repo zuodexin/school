@@ -1,4 +1,4 @@
-package com.zuodexin.ui.panel;
+package com.zuodexin.ui.panel.stu;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -23,16 +23,14 @@ import com.zuodexin.po.JionClass;
 import com.zuodexin.po.Schoolclass;
 import com.zuodexin.po.SelectCourse;
 import com.zuodexin.ui.frame.StudentFrame;
+import com.zuodexin.ui.panel.ControlPanel;
+import com.zuodexin.ui.panel.SelectDeleteControlPanel;
 
-public class SelectedCourseControlPanel extends ControlPanel{
-	JLabel label=new JLabel("选择班级");
-	JComboBox comboBox=new JComboBox();
-	JButton jbSelect=new JButton("更改");
-	JButton jbDelete=new JButton("删除");
+public class SelectedCourseControlPanel extends SelectDeleteControlPanel{
 	SelectCourse selectCourse;
 	List<Schoolclass> classList=new ArrayList<Schoolclass>();
 	public SelectedCourseControlPanel(JFrame frame){
-		super(frame);
+		super(frame, "选择班级", "更改", "删除");
 		this.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
 		jbDelete.addActionListener(new ActionListener() {
 			@Override

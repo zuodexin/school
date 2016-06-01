@@ -29,9 +29,9 @@ import com.zuodexin.ui.adapter.FinishCourseAdapter;
 import com.zuodexin.ui.adapter.SelectedCourseAdatpter;
 import com.zuodexin.ui.layout.GBC;
 import com.zuodexin.ui.panel.ControlPanel;
-import com.zuodexin.ui.panel.SelectCourseControlPanle;
-import com.zuodexin.ui.panel.SelectedCourseControlPanel;
 import com.zuodexin.ui.panel.TablePanel;
+import com.zuodexin.ui.panel.stu.SelectCourseControlPanle;
+import com.zuodexin.ui.panel.stu.SelectedCourseControlPanel;
 import com.zuodexin.ui.widget.MyTable;
 import com.zuodexin.ui.widget.MyTableModel;
 
@@ -107,6 +107,7 @@ public class StudentFrame extends BusinessFrame {
 		switchControlPanel(sccp);
 		initListener();
 		this.menuBar.add(usecase);
+		this.setJMenuBar(menuBar);
 	}
 
 	private void initLayout() {
@@ -128,8 +129,6 @@ public class StudentFrame extends BusinessFrame {
 		this.add(rightPanel,
 				new GBC(3, 0, 2, 3).setFill(GBC.BOTH).setIpad(100, 0)
 						.setWeight(1, 1));
-
-		this.setJMenuBar(menuBar);
 	}
 
 	private void initListener() {
@@ -158,12 +157,6 @@ public class StudentFrame extends BusinessFrame {
 	                 System.out.println("学院id"+institute.getId());
 	                 System.out.println("选中第"+index+"项");
 	             }
-			}
-		});
-		sdccp.getComboBox().addItemListener(new ItemListener() {
-			@Override
-			public void itemStateChanged(ItemEvent e) {
-				
 			}
 		});
 	}

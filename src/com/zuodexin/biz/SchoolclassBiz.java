@@ -17,4 +17,6 @@ public class SchoolclassBiz extends Biz{
 		this.entityDao=new SchoolclassDao();
 		this.refresh();
 	}
+	
+	
 }

@@ -9,8 +9,6 @@ import com.zuodexin.po.Course;
 import com.zuodexin.po.Institute;
 
 public class StudentController {
-	public final String[] courseTitle={"id","课程名","学时"};
-	public final String[] classTitle={"id","班级名","人数","教授"};
 	
 	private static  StudentController studentController;
 	StudentBiz biz;

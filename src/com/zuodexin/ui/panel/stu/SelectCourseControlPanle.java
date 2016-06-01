@@ -1,4 +1,4 @@
-package com.zuodexin.ui.panel;
+package com.zuodexin.ui.panel.stu;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -19,16 +19,15 @@ import com.zuodexin.dao.InstituteDao;
 import com.zuodexin.po.Course;
 import com.zuodexin.po.Institute;
 import com.zuodexin.po.SelectCourse;
+import com.zuodexin.ui.panel.ControlPanel;
+import com.zuodexin.ui.panel.SelectControlPanel;
 
-public class SelectCourseControlPanle extends ControlPanel{
-	JLabel label=new JLabel("选择学院");
-	JComboBox comboBox=new JComboBox();
+public class SelectCourseControlPanle extends SelectControlPanel{
 	List<Institute> institutes; 
 	Course course;
-	JButton jbSelect=new JButton("选课");
 	
 	public SelectCourseControlPanle(JFrame frame){
-		super(frame);
+		super(frame, "选择学院", "选课");
 		institutes=new InstituteDao().findAll();
 		this.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
 		for(Institute i:institutes){
@@ -91,5 +90,4 @@ public class SelectCourseControlPanle extends ControlPanel{
 	public void onItemChanged(Object item) {
 		this.course=(Course) item;
 	}
-	
 }

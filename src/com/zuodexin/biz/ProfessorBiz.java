@@ -78,7 +78,6 @@ public class ProfessorBiz extends Biz implements AuthBiz{
 				).toList();
 	}
 	
-	
 	public boolean teachClass(Schoolclass schoolclass){
 		TeachClass teachClass=new TeachClass();
 		teachClass.setProfessor((Professor)this.entity);
