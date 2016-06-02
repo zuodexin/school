@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import com.zuodexin.biz.StateBiz;
 import com.zuodexin.biz.StudentBiz;
 import com.zuodexin.controller.StudentController;
 import com.zuodexin.dao.InstituteDao;
@@ -34,8 +35,14 @@ public class SelectedCourseControlPanel extends SelectDeleteControlPanel{
 		this.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
 		jbDelete.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {		
+			public void actionPerformed(ActionEvent e) {
+				StateBiz stateBiz=new StateBiz();
 				if(selectCourse==null) return;
+				if(!stateBiz.isSelectCourseAllowed()) {
+					JOptionPane.showMessageDialog(null, 
+							"选课系统已关闭", "操作失败", JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				StudentBiz biz=StudentController.getInstance().getBiz();
 				biz.dropCourse(selectCourse.getCourse());
 				JOptionPane.showMessageDialog(null, 
@@ -44,10 +51,15 @@ public class SelectedCourseControlPanel extends SelectDeleteControlPanel{
 			}
 		});
 		jbSelect.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				StateBiz stateBiz=new StateBiz();
 				if(selectCourse==null) return;
+				if(!stateBiz.isSelectCourseAllowed()) {
+					JOptionPane.showMessageDialog(null, 
+							"选课系统已关闭", "操作失败", JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				StudentBiz biz=StudentController.getInstance().getBiz();
 				Course course=selectCourse.getCourse();
 				int index=comboBox.getSelectedIndex();

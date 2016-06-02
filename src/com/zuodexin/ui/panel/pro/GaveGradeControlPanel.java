@@ -10,9 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import com.zuodexin.biz.ProfessorBiz;
+import com.zuodexin.biz.StateBiz;
 import com.zuodexin.controller.ProfessorController;
 import com.zuodexin.po.Course;
 import com.zuodexin.po.Instruct;
@@ -41,6 +43,12 @@ public class GaveGradeControlPanel extends ControlPanel{
 		btnCommit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				StateBiz stateBiz=new StateBiz();
+				if(!stateBiz.isGaveGradeAllowed()) {
+					JOptionPane.showMessageDialog(null, 
+							"打分系统已关闭", "操作失败", JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				if(selectCourse!=null);
 				ProfessorBiz biz=ProfessorController.getInstance().getBiz();
 				biz.gaveGrades(selectCourse.getCourse(),

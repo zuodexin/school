@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import com.zuodexin.biz.StateBiz;
 import com.zuodexin.biz.StudentBiz;
 import com.zuodexin.controller.StudentController;
 import com.zuodexin.dao.InstituteDao;
@@ -36,6 +37,12 @@ public class SelectCourseControlPanle extends SelectControlPanel{
 		jbSelect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				StateBiz stateBiz=new StateBiz();
+				if(!stateBiz.isSelectCourseAllowed()) {
+					JOptionPane.showMessageDialog(null, 
+							"选课系统已关闭", "操作失败", JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				StudentBiz biz=StudentController.getInstance().getBiz();
 				if(biz.selectCourse(course)){
 					JOptionPane.showMessageDialog(null, 

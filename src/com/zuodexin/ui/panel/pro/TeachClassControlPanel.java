@@ -8,8 +8,10 @@ import java.util.List;
 
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import com.zuodexin.biz.ProfessorBiz;
+import com.zuodexin.biz.StateBiz;
 import com.zuodexin.controller.ProfessorController;
 import com.zuodexin.po.Course;
 import com.zuodexin.po.Instruct;
@@ -36,6 +38,12 @@ public class TeachClassControlPanel extends SelectDeleteControlPanel{
 		jbSelect.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				StateBiz stateBiz=new StateBiz();
+				if(!stateBiz.isTeachClassAllowed()) {
+					JOptionPane.showMessageDialog(null, 
+							"选课系统已关闭", "操作失败", JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				if(schoolclass==null) return;
 				ProfessorBiz biz=ProfessorController.getInstance().getBiz();
 				biz.teachClass(schoolclass);
@@ -46,6 +54,12 @@ public class TeachClassControlPanel extends SelectDeleteControlPanel{
 		jbDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				StateBiz stateBiz=new StateBiz();
+				if(!stateBiz.isTeachClassAllowed()) {
+					JOptionPane.showMessageDialog(null, 
+							"选课系统已关闭", "操作失败", JOptionPane.PLAIN_MESSAGE);
+					return;
+				}
 				if(schoolclass==null) return;
 				ProfessorBiz biz=ProfessorController.getInstance().getBiz();
 				biz.declineClass(schoolclass);
