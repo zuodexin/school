@@ -16,10 +16,12 @@
         <mapping resource="com/zuodexin/po/Student.hbm.xml" />
         <mapping resource="com/zuodexin/po/Professor.hbm.xml" />
         <mapping resource="com/zuodexin/po/Instruct.hbm.xml" />
+        <mapping resource="com/zuodexin/po/Admin.hbm.xml" />
         <mapping resource="com/zuodexin/po/TeachClass.hbm.xml" />
         <mapping resource="com/zuodexin/po/Schoolclass.hbm.xml" />
         <mapping resource="com/zuodexin/po/JionClass.hbm.xml" />
         <mapping resource="com/zuodexin/po/Hire.hbm.xml" />
+        <mapping resource="com/zuodexin/po/State.hbm.xml" />
         <mapping resource="com/zuodexin/po/SelectCourse.hbm.xml" />
         <mapping resource="com/zuodexin/po/Course.hbm.xml" />
         <mapping resource="com/zuodexin/po/Institute.hbm.xml" />

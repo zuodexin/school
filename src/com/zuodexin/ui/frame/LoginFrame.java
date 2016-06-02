@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import com.zuodexin.controller.GlobalController;
+import com.zuodexin.strategy.AdminLoginStrategy;
 import com.zuodexin.strategy.ProfessorLoginStrategy;
 import com.zuodexin.strategy.StudentLoginStrategy;
 import com.zuodexin.ui.panel.LoginFormPanel;
@@ -39,6 +40,6 @@ public class LoginFrame extends JFrame{
 	private void initStrategy(){
 		studentFormPanel.setStrategy(new StudentLoginStrategy());
 		professorFormPanel.setStrategy(new ProfessorLoginStrategy());
-		adminFormPanel.setStrategy(new StudentLoginStrategy());
+		adminFormPanel.setStrategy(new AdminLoginStrategy());
 	}
 }

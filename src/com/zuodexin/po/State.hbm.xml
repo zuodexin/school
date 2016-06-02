@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-2 11:21:52 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.zuodexin.po.State" table="state" catalog="school">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="canSelectCourse" type="boolean">
+            <column name="can_select_course" not-null="true" />
+        </property>
+        <property name="canTeachClass" type="boolean">
+            <column name="can_teach_class" not-null="true" />
+        </property>
+        <property name="canGaveGrade" type="boolean">
+            <column name="can_gave_grade" not-null="true" />
+        </property>
+        <property name="active" type="boolean">
+            <column name="active" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

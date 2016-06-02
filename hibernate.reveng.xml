@@ -2,6 +2,7 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
+  <table-filter match-catalog="school" match-name="admin"/>
   <table-filter match-catalog="school" match-name="course"/>
   <table-filter match-catalog="school" match-name="hire"/>
   <table-filter match-catalog="school" match-name="institute"/>
@@ -9,7 +10,8 @@
   <table-filter match-catalog="school" match-name="jion_class"/>
   <table-filter match-catalog="school" match-name="professor"/>
   <table-filter match-catalog="school" match-name="schoolclass"/>
+  <table-filter match-catalog="school" match-name="select_course"/>
+  <table-filter match-catalog="school" match-name="state"/>
   <table-filter match-catalog="school" match-name="student"/>
   <table-filter match-catalog="school" match-name="teach_class"/>
-  <table-filter match-catalog="school" match-name="select_course"/>
 </hibernate-reverse-engineering>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-6-2 9:57:42 by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="com.zuodexin.po.Admin" table="admin" catalog="school">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="20" not-null="true" unique="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
