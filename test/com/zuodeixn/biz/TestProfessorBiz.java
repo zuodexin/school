@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.zuodexin.biz.Biz;
 import com.zuodexin.biz.CourseBiz;
 import com.zuodexin.biz.ProfessorBiz;
 import com.zuodexin.po.Course;
 import com.zuodexin.po.Instruct;
 import com.zuodexin.po.Professor;
 import com.zuodexin.po.Schoolclass;
+import com.zuodexin.po.SelectCourse;
 import com.zuodexin.po.Student;
 import com.zuodexin.po.TeachClass;
 
@@ -109,5 +111,29 @@ public class TestProfessorBiz {
 		}
 		Student student=stulist.get(0);
 		professorBiz.gaveGrades(schoolclass.getCourse(), student, 100);
+	}
+	
+	@Test
+	public void testGetGradeList(){
+
+		professorBiz=new ProfessorBiz();
+		professorBiz.Login("2121", "123");
+		Professor professor=(Professor) professorBiz.getEntity();
+		
+		System.out.println(professor.getName()+"负责的班级有");
+		List<Schoolclass> teachList=professorBiz.getTeachClassesList();
+		for(Schoolclass t:teachList){
+			System.out.println(t.getInfo());
+		}
+		Schoolclass schoolclass=teachList.get(0);
+		List<Student> stulist=professorBiz.seeStudentList(schoolclass);
+		System.out.println("选择了该课的有");
+		for(Student s:stulist){
+			System.out.println(s.getName());
+		}
+		List<SelectCourse> selectCourses=professorBiz.getGradeList(schoolclass);
+		for(SelectCourse s:selectCourses){
+			System.out.println(s.getGrade());
+		}
 	}
 }

@@ -77,4 +77,6 @@ create table hire(
 	foreign key(institute) references institute(id),
 	foreign key(professor) references professor(id)
 )
-
+CREATE TABLE `school`.`admin` ( `id` INT NOT NULL , 
+`username` VARCHAR(20) NOT NULL , 
+`password` VARCHAR(20) NOT NULL ) ENGINE = InnoDB;

@@ -119,6 +119,10 @@ public class ProfessorBiz extends Biz implements AuthBiz{
 		List<Schoolclass> classList=schoolclassDao.findByCourse(course); 
 		return classList;
 	}
+	public List<Schoolclass> getTeachClassList(Course course){
+		List<Schoolclass> classList=schoolclassDao.findByCourseProfessor(course, (Professor)this.getEntity()); 
+		return classList;
+	}
 	public boolean IsClassTeacher(Schoolclass schoolclass) {
 		Iterator<TeachClass> iterator=schoolclass.getTeachClasses().iterator();
 		Professor professor=(Professor) this.getEntity();
@@ -128,5 +132,9 @@ public class ProfessorBiz extends Biz implements AuthBiz{
 				return true;
 		}
 		return false;
+	}
+	
+	public List<SelectCourse> getGradeList(Schoolclass schoolclass){
+		return selectCourseDao.findBySchoolclass(schoolclass);
 	}
 }

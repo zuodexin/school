@@ -3,6 +3,7 @@ package com.zuodexin.dao;
 import java.util.List;
 
 import com.zuodexin.po.Course;
+import com.zuodexin.po.Schoolclass;
 import com.zuodexin.po.SelectCourse;
 import com.zuodexin.po.Student;
 
@@ -38,5 +39,11 @@ public class SelectCourseDao extends Dao{
 		String hql="FROM SelectCourse WHERE student=? and grade is null";
 		List<SelectCourse> list=(List<SelectCourse>) viewer.viewMany(hql, student);
 		return list;
+	}
+	public List<SelectCourse> findBySchoolclass(Schoolclass schoolclass){
+		String hql="SELECT S "
+				+ "FROM SelectCourse AS S, JionClass AS J "
+				+ "WHERE S.student=J.student and J.schoolclass=? ";
+		return (List<SelectCourse>) viewer.viewMany(hql, schoolclass);	
 	}
 }

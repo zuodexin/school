@@ -18,7 +18,8 @@ public abstract class BusinessFrame extends JFrame{
 	String[] studentTitle={"id","学号","姓名"};
 	
 	ControlPanel controlPanel;
-	InfoPanel infoPanel=new InfoPanel();
+	JPanel infoPanel=new InfoPanel();
+	TablePanel sidePanel;
 	//根据不同的业务有不同的table panel
 	TablePanel tablePanel;
 	JMenuBar menuBar=new JMenuBar();

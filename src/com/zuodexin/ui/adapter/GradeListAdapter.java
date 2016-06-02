@@ -3,12 +3,12 @@ package com.zuodexin.ui.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.zuodexin.po.Student;
+import com.zuodexin.po.SelectCourse;
 import com.zuodexin.ui.widget.MyTableModel;
 
-public class StudentListAdapter implements ListAdapter{
-	String[] head={"id","学号","姓名"};
-	List<Student> data=new ArrayList<Student>();
+public class GradeListAdapter implements ListAdapter{
+	String[] head={"学号","姓名","分数"};
+	List<SelectCourse> data=new ArrayList<SelectCourse>();
 	MyTableModel model;
 	
 	@Override
@@ -18,11 +18,11 @@ public class StudentListAdapter implements ListAdapter{
 
 	@Override
 	public List itemAttribute(int index) {
-		Student student=data.get(index);
+		SelectCourse selectCourse=data.get(index);
 		List list=new ArrayList();
-		list.add(student.getId());
-		list.add(student.getStuId());
-		list.add(student.getName());
+		list.add(selectCourse.getStudent().getStuId());
+		list.add(selectCourse.getStudent().getName());
+		list.add(selectCourse.getGrade());
 		return list;
 	}
 
@@ -33,7 +33,7 @@ public class StudentListAdapter implements ListAdapter{
 
 	@Override
 	public void addItem(Object o) {
-		data.add((Student) o);
+		data.add((SelectCourse) o);
 	}
 
 	@Override
@@ -53,5 +53,4 @@ public class StudentListAdapter implements ListAdapter{
 	public void attachObserver(MyTableModel model) {
 		this.model=model;
 	}
-
 }
