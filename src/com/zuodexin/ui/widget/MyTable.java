@@ -13,13 +13,13 @@ public class MyTable extends JTable {
 		}
 		return true;
 	}
-	@Override
-	public TableCellRenderer getDefaultRenderer(Class<?> columnClass) {
-		DefaultTableCellRenderer tableRenderer = (DefaultTableCellRenderer) super
-		.getDefaultRenderer(columnClass);
-		// 设置单元格内容居中显示
-		tableRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
-		// 注意这个的CENTER这个系统变量
-		return tableRenderer;
-	}
+//	@Override
+//	public TableCellRenderer getDefaultRenderer(Class<?> columnClass) {
+//		DefaultTableCellRenderer tableRenderer = (DefaultTableCellRenderer) super
+//		.getDefaultRenderer(columnClass);
+//		// 设置单元格内容居中显示
+//		tableRenderer.setHorizontalAlignment(DefaultTableCellRenderer.CENTER);
+//		// 注意这个的CENTER这个系统变量
+//		return tableRenderer;
+//	}
 }

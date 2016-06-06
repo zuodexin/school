@@ -17,6 +17,7 @@ public class TablePanel extends JScrollPane{
 	public TablePanel(MyTableModel tmd){
 		this.tmd=tmd;
 		table.setModel(tmd);
+		table.setRowHeight(30);
 		this.setViewportView(table);	
 	}
 
@@ -36,5 +37,4 @@ public class TablePanel extends JScrollPane{
 		this.tmd = tmd;
 		table.setModel(tmd);
 	}
-	
 }

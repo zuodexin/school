@@ -32,10 +32,10 @@ public class TestInstituteBiz {
 	@Test
 	public void testOpenCourse(){
 		Course course=new Course();
-		course.setName("怒斥港记");
+		course.setName("跑步");
 		course.setPeroid(20);
 		Institute institute=new Institute();
-		institute.setId(13);
+		institute.setId(7);
 		instituteBiz=new InstituteBiz(institute);
 		if(instituteBiz.openCourse(course)){
 			System.out.println("开课成功");
